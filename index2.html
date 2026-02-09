@@ -16,63 +16,71 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 15px;
+            line-height: 1.6;
         }
         
         header {
-            background: #6a1b9a;
+            background: linear-gradient(135deg, #6a1b9a 0%, #8e24aa 100%);
             color: white;
-            padding: 30px;
+            padding: 25px 20px;
             text-align: center;
-            border-radius: 15px;
+            border-radius: 12px;
             margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         
         header h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
+            font-size: 26px;
+            margin-bottom: 8px;
         }
         
         header .subtitle {
-            font-size: 18px;
-            opacity: 0.9;
+            font-size: 16px;
+            opacity: 0.95;
         }
         
         .instructions {
             background: white;
-            padding: 20px;
+            padding: 18px;
             border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 15px;
+        }
+        
+        .progress {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #6a1b9a;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
         
         .question-card {
             background: white;
-            padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: transform 0.2s;
-        }
-        
-        .question-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            padding: 20px;
+            margin-bottom: 18px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
         }
         
         .question-header {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: bold;
             color: #6a1b9a;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
             border-bottom: 2px solid #f0f0f0;
         }
         
         .question-text {
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 15px;
+            line-height: 1.7;
             margin-bottom: 15px;
             color: #333;
         }
@@ -83,21 +91,46 @@
             border-radius: 8px;
             margin: 15px 0;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: block;
         }
         
-        .video-link {
+        .video-container {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-right: 4px solid #6a1b9a;
+        }
+        
+        .video-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #6a1b9a;
+            font-size: 14px;
+        }
+        
+        .video-btn {
             display: inline-block;
-            background: #2196F3;
+            background: linear-gradient(135deg, #e91e63 0%, #f44336 100%);
             color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 24px;
+            border-radius: 25px;
             text-decoration: none;
-            margin: 10px 5px;
-            transition: background 0.3s;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(233, 30, 99, 0.3);
+            font-size: 14px;
+            margin: 5px;
         }
         
-        .video-link:hover {
-            background: #1976D2;
+        .video-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+        }
+        
+        .video-btn::before {
+            content: "▶ ";
+            margin-left: 5px;
         }
         
         .options {
@@ -105,38 +138,43 @@
         }
         
         .option {
-            display: block;
-            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            padding: 12px 14px;
             margin: 8px 0;
             background: #f8f9fa;
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s;
-            position: relative;
         }
         
         .option:hover {
             background: #e3f2fd;
             border-color: #6a1b9a;
+            transform: translateX(-3px);
         }
         
         .option input[type="radio"] {
             margin-left: 10px;
             cursor: pointer;
+            width: 18px;
+            height: 18px;
         }
         
         .option label {
             cursor: pointer;
-            display: inline;
+            flex: 1;
+            font-size: 14px;
         }
         
         .feedback {
-            margin-top: 10px;
+            margin-top: 12px;
             padding: 12px;
             border-radius: 8px;
             font-weight: bold;
             display: none;
+            font-size: 14px;
         }
         
         .feedback.correct {
@@ -146,6 +184,11 @@
             display: block;
         }
         
+        .feedback.correct::before {
+            content: "✓ ";
+            font-size: 18px;
+        }
+        
         .feedback.incorrect {
             background: #f8d7da;
             color: #721c24;
@@ -153,30 +196,33 @@
             display: block;
         }
         
+        .feedback.incorrect::before {
+            content: "✗ ";
+            font-size: 18px;
+        }
+        
         .submit-btn {
-            background: #6a1b9a;
+            background: linear-gradient(135deg, #6a1b9a 0%, #8e24aa 100%);
             color: white;
-            padding: 15px 40px;
+            padding: 16px 40px;
             border: none;
-            border-radius: 8px;
+            border-radius: 25px;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
             display: block;
-            margin: 30px auto;
-            box-shadow: 0 4px 12px rgba(106, 27, 154, 0.3);
+            margin: 25px auto;
+            box-shadow: 0 4px 15px rgba(106, 27, 154, 0.3);
             transition: all 0.3s;
         }
         
         .submit-btn:hover {
-            background: #7b1fa2;
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(106, 27, 154, 0.4);
+            box-shadow: 0 6px 20px rgba(106, 27, 154, 0.4);
         }
         
-        .submit-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
+        .submit-btn:active {
+            transform: translateY(0);
         }
         
         .result {
@@ -186,50 +232,73 @@
             text-align: center;
             display: none;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            margin-top: 20px;
         }
         
         .result.show {
             display: block;
         }
         
+        .result h2 {
+            color: #6a1b9a;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
         .score {
-            font-size: 48px;
+            font-size: 52px;
             color: #6a1b9a;
             font-weight: bold;
             margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
         
         .score-text {
-            font-size: 24px;
+            font-size: 20px;
             margin: 15px 0;
+            color: #333;
         }
         
         .restart-btn {
-            background: #4CAF50;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
             color: white;
-            padding: 12px 30px;
+            padding: 14px 35px;
             border: none;
-            border-radius: 8px;
+            border-radius: 25px;
             font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
             margin-top: 20px;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
         }
         
         .restart-btn:hover {
-            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
         }
-        
-        .progress {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #6a1b9a;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 22px;
+            }
+            
+            .question-header {
+                font-size: 16px;
+            }
+            
+            .question-text {
+                font-size: 14px;
+            }
+            
+            .video-btn {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+            
+            .score {
+                font-size: 42px;
+            }
         }
     </style>
 </head>
@@ -240,7 +309,7 @@
     </header>
 
     <div class="instructions">
-        <strong>הוראות:</strong> במבדק זה 25 שאלות. בחרו באפשרות הנכונה ביותר בכל שאלה. לאחר מכן לחצו על "בדוק תשובות" לקבלת התוצאה שלכם.
+        <strong>הוראות:</strong> במבדק זה 25 שאלות. בחרו באפשרות הנכונה ביותר בכל שאלה. חלק מהשאלות כוללות סרטונים - לחצו על הכפתור לצפייה. לאחר מכן לחצו על "בדוק תשובות" לקבלת התוצאה שלכם.
     </div>
 
     <div class="progress" id="progress">
@@ -277,7 +346,7 @@
             <div class="question-text">
                 מי מהחומרים הוא המרכיב העיקרי של האוויר?
             </div>
-            <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVDGK3RW-7dpVTUOLAD004GGM8cgpJG5SPw3FVh136EIzcg2uJdKY5OnmrINCfeasRXm6xny4e1hlV-XIGG39bvGeevXIyITPCGm6vMs74sFOJ0I0Bf6dtmcwXaLGt0ZThpbLp1T_HDzgvmKPSirGD3iW8L8rwDUEC7wIub-y-2fCzF4vKXmtY6UTLj-fzt8Rsf1TGGHEnTA6Ys=w553" class="question-image" alt="תרשים">
+            <img src="https://github.com/milkabcd-dot/avir/blob/main/2.png?raw=true" class="question-image" alt="תרשים הרכב האוויר">
             <div class="options">
                 <div class="option">
                     <input type="radio" name="q2" value="a" id="q2a">
@@ -305,11 +374,10 @@
             <div class="question-text">
                 צפו בסרטון המצורף לשאלה, ובחרו באפשרות הנכונה.
             </div>
-            <div style="margin: 15px 0;">
-                <p style="font-weight: bold; margin-bottom: 10px;">סרטון מלווה:</p>
-                <iframe width="100%" height="315" style="max-width: 560px; border-radius: 8px;" src="https://www.youtube.com/embed/VDAbuFWjXWw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p style="font-weight: bold; margin: 15px 0 10px 0;">סרטון נוסף - העשרה:</p>
-                <iframe width="100%" height="315" style="max-width: 560px; border-radius: 8px;" src="https://www.youtube.com/embed/B9tV5EGWZ9s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-container">
+                <div class="video-label">סרטונים מלווים:</div>
+                <a href="https://www.youtube.com/watch?v=VDAbuFWjXWw" target="_blank" class="video-btn">צפו בסרטון 1</a>
+                <a href="https://www.youtube.com/watch?v=B9tV5EGWZ9s" target="_blank" class="video-btn">צפו בסרטון 2 - העשרה</a>
             </div>
             <div class="options">
                 <div class="option">
@@ -392,9 +460,9 @@
             <div class="question-text">
                 ניתן להפיק חנקן בתהליך תעשייתי. לצורך כך מקררים את האוויר עד טמפרטורה של ( 200°C- ) . האוויר הופך לנוזל בצבע כחלחל. האוויר הנוזל מכיל חמצן במצב צבירה נוזל וחנקן במצב צבירה נוזל מעורבבים יחד. מניחים לאוויר הנוזל להתחמם. כאשר הוא מגיע לטמפרטורה של ( 196°C- ), החנקן הופך לגז, וניתן לאסוף אותו. בטמפרטורה זו החמצן נותר עדיין נוזל, וכך מצליחים להפריד בין שני הגזים. החמצן הנוזל הופך לגז בטמפרטורה של (183°C -). איזה נוזל הופך לגז בטמפרטורה נמוכה יותר, החמצן או החנקן?
             </div>
-            <div style="margin: 15px 0;">
-                <p style="font-weight: bold; margin-bottom: 10px;">סרטון מלווה:</p>
-                <iframe width="100%" height="315" style="max-width: 560px; border-radius: 8px;" src="https://www.youtube.com/embed/J6J47XX55CU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-container">
+                <div class="video-label">סרטון מלווה:</div>
+                <a href="https://www.youtube.com/watch?v=J6J47XX55CU" target="_blank" class="video-btn">צפו בסרטון</a>
             </div>
             <div class="options">
                 <div class="option">
@@ -423,7 +491,7 @@
             <div class="question-text">
                 הצמחים קולטים פחמן דו חמצני מהאוויר דרך פתחים זעירים בעלים, ומים דרך קצות השורשים. בעזרת אנרגיית האור הם מחוללים בחומרי גלם אלה שינויים, ומייצרים סוכר וחמצן. תהליך מורכב זה מכונה: פוטוסינתזה. החמצן אשר משתחרר דרך הפתחים הזעירים בעלים חיוני לנשימתם של רוב היצורים החיים. המילה פוטוסינתזה מורכבת משתי מילים: פוטו וסינתזה. סינתזה פירושה הרכבה או יצירה. מה פירוש המילה: פוטו?
             </div>
-            <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVAn_0MGCodmerUg-A88hryu3Jmn-q94REQ2wj5h-0KftWnfC3cBBTireYw_0hHOSx1nZaql7DD-dt-1iED_Gdwz5sd3U-2ln3T9Vbl9CsSyEugjjumk9VMv14Fm34q5zm_Cr4lUYIdMv2V-m7nyZhe1qjg6BEhpUVk-5Rr-Kx4NgxxyxUR_4NsS1Eocwzo_bgGY_4ufBIa02A=w675" class="question-image" alt="תמונה">
+            <img src="https://github.com/milkabcd-dot/avir/blob/main/7.png?raw=true" class="question-image" alt="תרשים פוטוסינתזה">
             <div class="options">
                 <div class="option">
                     <input type="radio" name="q7" value="a" id="q7a">
@@ -451,7 +519,7 @@
             <div class="question-text">
                 משפחה רכשה מיכל קשיח של גז בישול. על המיכל רשום שנפח המיכל 40 ליטר, וכמות הגז 100 קילוגרם. מה יקרה לנפח הגז במיכל לאחר חודש של שימוש? מה יקרה למסת הגז במיכל לאחר חודש של שימוש? (נפח הגז= המקום שהוא תופס, מסת הגז= כמות הגז)
             </div>
-            <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVBd84GZ4AGuB3RlKi6WnwlSwR3cvfp556DotpcjpOpR5VoByvwpLKjRlHe0HhboGXna_x6TjCvqHOsgusMV5oFaVxEb9grOZfGNSYrUUFX4dyGrz4WpRD4zR2fj3E7GAhvZEKnDo9aOdkBOMwlb6IMk_26N4ItbxvR6lg7CMtfnBt5MxslpiGBR21QBNrYVE8WQFAaPB0f_X10=w708" class="question-image" alt="תמונה">
+            <img src="https://github.com/milkabcd-dot/avir/blob/main/8.png?raw=true" class="question-image" alt="תרשים מיכל גז">
             <div class="options">
                 <div class="option">
                     <input type="radio" name="q8" value="a" id="q8a">
@@ -479,9 +547,9 @@
             <div class="question-text">
                 צפו בסרטון "לחץ האוויר", ובחרו באפשרות הנכונה.
             </div>
-            <div style="margin: 15px 0;">
-                <p style="font-weight: bold; margin-bottom: 10px;">סרטון מלווה:</p>
-                <iframe width="100%" height="315" style="max-width: 560px; border-radius: 8px;" src="https://www.youtube.com/embed/zl657tCCudw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-container">
+                <div class="video-label">סרטון מלווה:</div>
+                <a href="https://www.youtube.com/watch?v=zl657tCCudw" target="_blank" class="video-btn">צפו בסרטון</a>
             </div>
             <div class="options">
                 <div class="option">
@@ -510,9 +578,9 @@
             <div class="question-text">
                 ליד נאפולי שבאיטליה ישנה מערה מפורסמת. מקרקעית מערה זו בוקע פחמן דו חמצני. הגז כבד מן האוויר, ולכן מצטבר על קרקעית המערה. בפתח מערה זו מהווה הפחמן הדו חמצני שיכבה של כשלושים סנטימטר. עובייה של שכבה זו הולך וגדל במידה ויורדים במערה ומגיע למטרים אחדים. הפחמן הדו חמצני הוא גז מסוכן בריכוזים גבוהים, הוא אינו מאפשר נשימה, ולכן גורם לחנק. ברור שהיצורים הראשונים הנפגעים במערה זו הם יצורים נמוכי קומה כמו הכלבים, מכאן שם המערה. באותו זמן לאדם ההולך בקומה זקופה לא יקרה דבר. צפו בסרטון ובחרו: מהן התוצאות של הניסוי המודגם?
             </div>
-            <div style="margin: 15px 0;">
-                <p style="font-weight: bold; margin-bottom: 10px;">סרטון מלווה:</p>
-                <iframe width="100%" height="315" style="max-width: 560px; border-radius: 8px;" src="https://www.youtube.com/embed/0drNRte__Wk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-container">
+                <div class="video-label">סרטון מלווה:</div>
+                <a href="https://www.youtube.com/watch?v=0drNRte__Wk" target="_blank" class="video-btn">צפו בסרטון</a>
             </div>
             <div class="options">
                 <div class="option">
@@ -541,7 +609,7 @@
             <div class="question-text">
                 שלושה בלונים בעלי נפח שווה, המכילים כל אחד גז אחר, שוחררו מראש מגדל ביום ללא רוח. מה לדעתכם יקרה לבלון?
             </div>
-            <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVBYACrAsTOfZ4FWFdC-1Tr7NAZcWVAOSqARJ5kJYzaVwYHxm2enijJISedb0hU0QZrs4k_bVC-RG5869x4IcldrSeDoE3pjcWN0aaRRaQAMhd1TaR0_oa-IxTK-QpY4iH401k361wTBPw4uJt6pEZg4TT7v8rTo4MKbsr3zTlVUAv7zHxBQe4pU3TN7AYUMsgW8sjPHK_PN5g=w424" class="question-image" alt="תמונה">
+            <img src="https://github.com/milkabcd-dot/avir/blob/main/11.png?raw=true" class="question-image" alt="תרשים בלונים">
             <div class="options">
                 <div class="option">
                     <input type="radio" name="q11" value="a" id="q11a">
@@ -569,7 +637,7 @@
             <div class="question-text">
                 תהליך הפוטוסינתזה, מתקיים בחלקי הצמח הירוקים, בזמן שיש אור ושאר תנאים מתאימים. כלומר: בחלק משעות היממה. תהליך הנשימה מתקיים בצמחים כל שעות היממה, כך יוצא שלעתים מתקיימים בצמח שני התהליכים במקביל. השלימו: בתהליך הנשימה....
             </div>
-            <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVBw_FPmLNM4s61l4AjeDAnUKgyb3Y-3nlQTDtk9MxqjOlC53jDUaQ4vhUm1ftk5JeI6SL9B1qM2qDL0-8msjzHtPYwzofSVdi7L6XiZmgCtNBa9DC1H7hyhqhKWx5lsNbzSXZLlc8GeAHvqUeZTSitYUd-y4ELAlvAkcz6hdc9R_VIPTewLPwrwnBD-LuNzlXQAJHOzaqt-KlI=w740" class="question-image" alt="תמונה">
+            <img src="https://github.com/milkabcd-dot/avir/blob/main/12.png?raw=true" class="question-image" alt="תרשים נשימה ופוטוסינתזה">
             <div class="options">
                 <div class="option">
                     <input type="radio" name="q12" value="a" id="q12a">
@@ -589,7 +657,7 @@
             <div class="question-text">
                 קיימים סוגים שונים של מטפים (מכשירי כיבוי). סוג אחד של מטפים מתיז פחמן דו חמצני על החומר הבוער. ידוע כי אש אינה יכולה לבעור ללא חמצן שבאוויר. הפחמן הדו חמצני שהוא גז כבד שאינו בוער, מותז על החומר הבוער, "עוטף" אותו ובדרך זו לא מאפשר לחמצן שבאוויר להגיע אליו. באין חמצן השריפה תיפסק. איזו עובדה נכונה, אך לא מוזכרת בקטע הקריאה?
             </div>
-            <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVDNMCk3mcj77dweNMN6wFw9vqio5pcTmNMtS3A1ty6vYI4ua9C4_-_Z1qjpabfEqxE9hoKXbXrc8uYy0ex6czjvOGI0qPYelYJ5dJsFbYxdjkQuGy3r4b-tm-eTEQHjv_ou77DltLMsWr4LH8q9OG22OdEeLv2XsL3fP_JHfaoC3FmM-NcdHx1W3baLvYedFWZ2BHgZcVph2A=w310" class="question-image" alt="תמונה">
+            <img src="https://github.com/milkabcd-dot/avir/blob/main/13.png?raw=true" class="question-image" alt="מטף כיבוי">
             <div class="options">
                 <div class="option">
                     <input type="radio" name="q13" value="a" id="q13a">
@@ -617,9 +685,9 @@
             <div class="question-text">
                 מי סיד צלולים הם אמצעי לזיהוי פחמן דו חמצני. כאשר נושפים פחמן דו חמצני לתוך מי סיד צלולים מתקבלת תמיסה בצבע......
             </div>
-            <div style="margin: 15px 0;">
-                <p style="font-weight: bold; margin-bottom: 10px;">סרטון מלווה:</p>
-                <iframe width="100%" height="315" style="max-width: 560px; border-radius: 8px;" src="https://www.youtube.com/embed/VfPu7EaLwho" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-container">
+                <div class="video-label">סרטון מלווה:</div>
+                <a href="https://www.youtube.com/watch?v=VfPu7EaLwho" target="_blank" class="video-btn">צפו בסרטון</a>
             </div>
             <div class="options">
                 <div class="option">
@@ -648,9 +716,9 @@
             <div class="question-text">
                 צפו בסרטון המלווה את השאלה. בסרטון מודגמות שיטות לזיהוי נוכחות פחמן דו חמצני, חמצן ומימן. כאשר קרבו קיסם בוער למבחנה מספר 3 נשמע קול נפץ. מה הכילה מבחנה מספר 3?
             </div>
-            <div style="margin: 15px 0;">
-                <p style="font-weight: bold; margin-bottom: 10px;">סרטון מלווה:</p>
-                <iframe width="100%" height="315" style="max-width: 560px; border-radius: 8px;" src="https://www.youtube.com/embed/tyhWF1EYtok" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-container">
+                <div class="video-label">סרטון מלווה:</div>
+                <a href="https://www.youtube.com/watch?v=tyhWF1EYtok" target="_blank" class="video-btn">צפו בסרטון</a>
             </div>
             <div class="options">
                 <div class="option">
@@ -679,9 +747,9 @@
             <div class="question-text">
                 צפו בסרטון המלווה את השאלה. הסרטון מתאר כיצד ניתן להפיק מימן במעבדה. פעולה זו מחייבת זהירות רבה, ונעשית במתקן מיוחד המכונה: מינדף. כאשר מוסיפים אלומיניום או אבץ לחומצת מלח משתחרר מימן. מה המשותף לאבץ ואלומיניום?
             </div>
-            <div style="margin: 15px 0;">
-                <p style="font-weight: bold; margin-bottom: 10px;">סרטון מלווה:</p>
-                <iframe width="100%" height="315" style="max-width: 560px; border-radius: 8px;" src="https://www.youtube.com/embed/-xk3VjeoAns" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-container">
+                <div class="video-label">סרטון מלווה:</div>
+                <a href="https://www.youtube.com/watch?v=-xk3VjeoAns" target="_blank" class="video-btn">צפו בסרטון</a>
             </div>
             <div class="options">
                 <div class="option">
@@ -710,9 +778,9 @@
             <div class="question-text">
                 בעבר השתמשו בגז מימן למילוי ספינות אוויר ובלונים, כיוון שהוא קל מהאוויר. בשנת 1937 ניצת המימן שבספינת האוויר הידנבורג, ובשריפה נהרגו 36 בני אדם. בעקבות זאת, השימוש במימן הופסק ובמקומו נעשה שימוש בהליום. מי מהאפשרויות נכונה?
             </div>
-            <div style="margin: 15px 0;">
-                <p style="font-weight: bold; margin-bottom: 10px;">סרטון מלווה:</p>
-                <iframe width="100%" height="315" style="max-width: 560px; border-radius: 8px;" src="https://www.youtube.com/embed/Qvmx_nBXrUk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-container">
+                <div class="video-label">סרטון מלווה:</div>
+                <a href="https://www.youtube.com/watch?v=Qvmx_nBXrUk" target="_blank" class="video-btn">צפו בסרטון</a>
             </div>
             <div class="options">
                 <div class="option">
@@ -741,9 +809,9 @@
             <div class="question-text">
                 מי מהמשפטים שגוי? (שגוי= לא נכון)
             </div>
-            <div style="margin: 15px 0;">
-                <p style="font-weight: bold; margin-bottom: 10px;">סרטון מלווה:</p>
-                <iframe width="100%" height="315" style="max-width: 560px; border-radius: 8px;" src="https://www.youtube.com/embed/UzHTBoqvL04" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-container">
+                <div class="video-label">סרטון מלווה:</div>
+                <a href="https://www.youtube.com/watch?v=UzHTBoqvL04" target="_blank" class="video-btn">צפו בסרטון</a>
             </div>
             <div class="options">
                 <div class="option">
@@ -776,9 +844,9 @@
             <div class="question-text">
                 מה ניתן ללמוד מהסרטון המצורף לשאלה?
             </div>
-            <div style="margin: 15px 0;">
-                <p style="font-weight: bold; margin-bottom: 10px;">סרטון מלווה:</p>
-                <iframe width="100%" height="315" style="max-width: 560px; border-radius: 8px;" src="https://www.youtube.com/embed/71MoxWeddnI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-container">
+                <div class="video-label">סרטון מלווה:</div>
+                <a href="https://www.youtube.com/watch?v=71MoxWeddnI" target="_blank" class="video-btn">צפו בסרטון</a>
             </div>
             <div class="options">
                 <div class="option">
@@ -807,7 +875,7 @@
             <div class="question-text">
                 גז הבישול (גפ"מ) מופק בארץ בתהליך הזיקוק של הנפט. גז זה הוא למעשה תערובת של מספר גזים שכולם דליקים, חסרי צבע וריח. גז הבישול הוא גז כבד יותר מהאוויר. במקרים של דליפה הוא מצטבר במקומות נמוכים, מצב שכזה עלול לגרום להצתה וחנק כתוצאה של חוסר חמצן. בבתי הזיקוק מוסיפים לו חומר נוזלי בעל ריח חריף כדי להבחין בו כשיש דליפה. גז הבישול המופק מהנפט הוא....
             </div>
-            <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVAAZgIFEFY3DuFyvCtNH4nzSvYh4c9SHU2A5iGNZGNNcbAk9qz9Jj8TPPK7qx_erE15QqzKHS4B8o2fM8HlzcErphCzr0l55aJMBeSdJGi8nHbwC13bvCgn8wxnVME8lf2vaxkgSLlZB9nlRnVgzcH2wAbYwZh1dkJFX46vGCidA6B3OEUrC8H5tI8Ml5K9nuL2VvoHJKVInHY=w476" class="question-image" alt="תמונה">
+            <img src="https://github.com/milkabcd-dot/avir/blob/main/20.png?raw=true" class="question-image" alt="בלון גז">
             <div class="options">
                 <div class="option">
                     <input type="radio" name="q20" value="a" id="q20a">
@@ -835,9 +903,9 @@
             <div class="question-text">
                 גז האמוניה הוא חסר צבע, אך בעל ריח חריף. השימוש העיקרי בה הוא לייצור דשנים, חומרי נפץ ופולימרים. שאיפת אמוניה בריכוזים העולים על 25-35 חלקים למיליון עשויה לגרום לנזק חמור לריאות ואף למוות. מה נכון לומר על גז האמוניה?
             </div>
-            <div style="margin: 15px 0;">
-                <p style="font-weight: bold; margin-bottom: 10px;">סרטון מלווה:</p>
-                <iframe width="100%" height="315" style="max-width: 560px; border-radius: 8px;" src="https://www.youtube.com/embed/y2nu3izvQjs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-container">
+                <div class="video-label">סרטון מלווה:</div>
+                <a href="https://www.youtube.com/watch?v=y2nu3izvQjs" target="_blank" class="video-btn">צפו בסרטון</a>
             </div>
             <div class="options">
                 <div class="option">
@@ -866,9 +934,9 @@
             <div class="question-text">
                 צפו בסרטון המצורף לשאלה, ובחרו את האפשרות הנכונה.
             </div>
-            <div style="margin: 15px 0;">
-                <p style="font-weight: bold; margin-bottom: 10px;">סרטון מלווה:</p>
-                <iframe width="100%" height="315" style="max-width: 560px; border-radius: 8px;" src="https://www.youtube.com/embed/yOS45xk-58M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-container">
+                <div class="video-label">סרטון מלווה:</div>
+                <a href="https://www.youtube.com/watch?v=yOS45xk-58M" target="_blank" class="video-btn">צפו בסרטון</a>
             </div>
             <div class="options">
                 <div class="option">
@@ -924,9 +992,9 @@
             <div class="question-text">
                 באיזה מוצר מיושם עיקרון מדעי המודגם בסרטון?
             </div>
-            <div style="margin: 15px 0;">
-                <p style="font-weight: bold; margin-bottom: 10px;">סרטון מלווה:</p>
-                <iframe width="100%" height="315" style="max-width: 560px; border-radius: 8px;" src="https://www.youtube.com/embed/LV-NZHQ9ASo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-container">
+                <div class="video-label">סרטון מלווה:</div>
+                <a href="https://www.youtube.com/watch?v=LV-NZHQ9ASo" target="_blank" class="video-btn">צפו בסרטון</a>
             </div>
             <div class="options">
                 <div class="option">
@@ -955,9 +1023,9 @@
             <div class="question-text">
                 צפו בסרטון וענו על השאלה: מדוע נראו בועות בכוס?
             </div>
-            <div style="margin: 15px 0;">
-                <p style="font-weight: bold; margin-bottom: 10px;">סרטון מלווה:</p>
-                <iframe width="100%" height="315" style="max-width: 560px; border-radius: 8px;" src="https://www.youtube.com/embed/Xai4it38nhI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-container">
+                <div class="video-label">סרטון מלווה:</div>
+                <a href="https://www.youtube.com/watch?v=Xai4it38nhI" target="_blank" class="video-btn">צפו בסרטון</a>
             </div>
             <div class="options">
                 <div class="option">
@@ -984,7 +1052,7 @@
     </form>
 
     <div class="result" id="result">
-        <h2>תוצאות המבדק</h2>
+        <h2>🎉 תוצאות המבדק 🎉</h2>
         <div class="score" id="score"></div>
         <div class="score-text" id="scoreText"></div>
         <button class="restart-btn" onclick="restartQuiz()">התחל מחדש</button>
@@ -1020,8 +1088,6 @@
             q25: 'c'   // אוויר מהבקבוק נכנס לכוס
         };
 
-        let answeredQuestions = 0;
-
         // עדכון ההתקדמות כאשר בוחרים תשובה
         document.querySelectorAll('input[type="radio"]').forEach(radio => {
             radio.addEventListener('change', function() {
@@ -1053,10 +1119,10 @@
                     if (selected.value === correctAnswers[`q${i}`]) {
                         score++;
                         feedback.className = 'feedback correct';
-                        feedback.textContent = '✓ נכון!';
+                        feedback.textContent = 'נכון!';
                     } else {
                         feedback.className = 'feedback incorrect';
-                        feedback.textContent = '✗ לא נכון';
+                        feedback.textContent = 'לא נכון';
                     }
                 } else {
                     const feedback = document.getElementById(`feedback${i}`);
@@ -1071,12 +1137,28 @@
                 return;
             }
 
+            // חישוב אחוזים
+            const percentage = Math.round((score / 25) * 100);
+            let message = '';
+            
+            if (percentage >= 90) {
+                message = '🌟 מצוין! ';
+            } else if (percentage >= 80) {
+                message = '👏 כל הכבוד! ';
+            } else if (percentage >= 70) {
+                message = '👍 יפה מאוד! ';
+            } else if (percentage >= 60) {
+                message = '✅ עבודה טובה! ';
+            } else {
+                message = '💪 המשיכו להשתפר! ';
+            }
+
             document.getElementById('score').textContent = `${score}/25`;
-            document.getElementById('scoreText').textContent = `קיבלת ${score} תשובות נכונות מתוך 25`;
+            document.getElementById('scoreText').textContent = `${message}קיבלת ${score} תשובות נכונות מתוך 25 (${percentage}%)`;
             document.getElementById('result').classList.add('show');
             
             // גלילה לתוצאה
-            document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
         function restartQuiz() {
