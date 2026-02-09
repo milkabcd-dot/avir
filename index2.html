@@ -1,78 +1,1044 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>חידון</title>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-
-    header {
-      background: #6a1b9a;
-      color: white;
-      padding: 20px;
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    header .subtitle {
-      font-size: 18px;
-      margin-top: 8px;
-      font-weight: normal;
-    }
-
-    .container {
-      margin: 20px auto;
-      width: 95%;
-      max-width: 900px;
-      background: white;
-      padding: 15px;
-      border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.2);
-    }
-
-    iframe {
-      width: 100%;
-      height: 2200px;
-      border: none;
-      border-radius: 10px;
-    }
-
-    footer {
-      margin: 20px;
-      font-size: 16px;
-      color: #333;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הרכב האוויר וגזים נוספים - מבדק סיכום</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        header {
+            background: #6a1b9a;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        header .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .instructions {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .question-card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: transform 0.2s;
+        }
+        
+        .question-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+        
+        .question-header {
+            font-size: 18px;
+            font-weight: bold;
+            color: #6a1b9a;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .question-text {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .question-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 15px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .video-link {
+            display: inline-block;
+            background: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+        
+        .video-link:hover {
+            background: #1976D2;
+        }
+        
+        .options {
+            margin-top: 15px;
+        }
+        
+        .option {
+            display: block;
+            padding: 12px 15px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .option:hover {
+            background: #e3f2fd;
+            border-color: #6a1b9a;
+        }
+        
+        .option input[type="radio"] {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        
+        .option label {
+            cursor: pointer;
+            display: inline;
+        }
+        
+        .feedback {
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            display: none;
+        }
+        
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+            display: block;
+        }
+        
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+            display: block;
+        }
+        
+        .submit-btn {
+            background: #6a1b9a;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            box-shadow: 0 4px 12px rgba(106, 27, 154, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #7b1fa2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(106, 27, 154, 0.4);
+        }
+        
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .result {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .result.show {
+            display: block;
+        }
+        
+        .score {
+            font-size: 48px;
+            color: #6a1b9a;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .score-text {
+            font-size: 24px;
+            margin: 15px 0;
+        }
+        
+        .restart-btn {
+            background: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        .restart-btn:hover {
+            background: #45a049;
+        }
+        
+        .progress {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #6a1b9a;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
-
 <body>
+    <header>
+        <h1>הרכב האוויר וגזים נוספים - מבדק סיכום</h1>
+        <div class="subtitle">עריכה: מילכה ברקו גרש</div>
+    </header>
 
-  <header>
-    חידון
-    <div class="subtitle">עריכה: מילכה ברקו גרש</div>
-  </header>
+    <div class="instructions">
+        <strong>הוראות:</strong> במבדק זה 25 שאלות. בחרו באפשרות הנכונה ביותר בכל שאלה. לאחר מכן לחצו על "בדוק תשובות" לקבלת התוצאה שלכם.
+    </div>
 
-  <div class="container">
-    <iframe 
-      src="https://docs.google.com/forms/d/e/1FAIpQLScPTOidsoShxmOSInOFoIzPQ7F_wqdlQDGp93DTafB7sm4E6w/viewform?embedded=true"
-      frameborder="0"
-      marginheight="0"
-      marginwidth="0">
-      בטעינה…
-    </iframe>
-  </div>
+    <div class="progress" id="progress">
+        התקדמות: 0/25 שאלות נענו
+    </div>
 
-  <footer>
-    בהצלחה!
-  </footer>
+    <form id="quizForm">
+        <!-- שאלה 1 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 1</div>
+            <div class="question-text">
+                אם נפריד את הגזים הנמצאים ב- 100 ליטר אוויר יבש (בלי אדי מים), נמצא בערך: 78 ליטר חנקן, 21 ליטר חמצן, 1 ליטר של פחמן דו חמצני, מימן וגזים אחרים. מה ניתן לומר על האוויר?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q1" value="a" id="q1a">
+                    <label for="q1a">האוויר הוא חומר אחד טהור</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q1" value="b" id="q1b">
+                    <label for="q1b">האוויר הוא תערובת חומרים</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q1" value="c" id="q1c">
+                    <label for="q1c">על פי נתוני השאלה אי אפשר לקבוע אם האוויר הוא תערובת או חומר טהור</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback1"></div>
+        </div>
 
+        <!-- שאלה 2 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 2</div>
+            <div class="question-text">
+                מי מהחומרים הוא המרכיב העיקרי של האוויר?
+            </div>
+            <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVDGK3RW-7dpVTUOLAD004GGM8cgpJG5SPw3FVh136EIzcg2uJdKY5OnmrINCfeasRXm6xny4e1hlV-XIGG39bvGeevXIyITPCGm6vMs74sFOJ0I0Bf6dtmcwXaLGt0ZThpbLp1T_HDzgvmKPSirGD3iW8L8rwDUEC7wIub-y-2fCzF4vKXmtY6UTLj-fzt8Rsf1TGGHEnTA6Ys=w553" class="question-image" alt="תרשים">
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q2" value="a" id="q2a">
+                    <label for="q2a">חנקן</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" value="b" id="q2b">
+                    <label for="q2b">חמצן</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" value="c" id="q2c">
+                    <label for="q2c">פחמן דו חמצני</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" value="d" id="q2d">
+                    <label for="q2d">מימן</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback2"></div>
+        </div>
+
+        <!-- שאלה 3 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 3</div>
+            <div class="question-text">
+                צפו בסרטון המצורף לשאלה, ובחרו באפשרות הנכונה.
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q3" value="a" id="q3a">
+                    <label for="q3a">חמצן משתחרר כתוצאה מחימום החומר: אשלגן על מנגנטי (קאלי)</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" value="b" id="q3b">
+                    <label for="q3b">הצבע האופייני לגרגירי החומר: אשלגן על מנגנטי (שהיה במבחנה) הוא ירוק</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" value="c" id="q3c">
+                    <label for="q3c">חמצן מדכא בערה</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" value="d" id="q3d">
+                    <label for="q3d">קיסם "עומם" הוא כינוי למקלון עץ, שהאש הבוערת בו חזקה מאוד</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback3"></div>
+        </div>
+
+        <!-- שאלה 4 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 4</div>
+            <div class="question-text">
+                מי מהגזים נחוץ לנשימה ודרוש לבערה?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q4" value="a" id="q4a">
+                    <label for="q4a">מימן</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q4" value="b" id="q4b">
+                    <label for="q4b">חמצן</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q4" value="c" id="q4c">
+                    <label for="q4c">פחמן דו חמצני</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q4" value="d" id="q4d">
+                    <label for="q4d">אמוניה</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback4"></div>
+        </div>
+
+        <!-- שאלה 5 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 5</div>
+            <div class="question-text">
+                גז החנקן הוא...
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q5" value="a" id="q5a">
+                    <label for="q5a">חסר ריח וחסר צבע</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" value="b" id="q5b">
+                    <label for="q5b">דליק</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" value="c" id="q5c">
+                    <label for="q5c">בעל ריח וצבע</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" value="d" id="q5d">
+                    <label for="q5d">נפלט בבערה</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback5"></div>
+        </div>
+
+        <!-- שאלה 6 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 6</div>
+            <div class="question-text">
+                ניתן להפיק חנקן בתהליך תעשייתי. לצורך כך מקררים את האוויר עד טמפרטורה של ( 200°C- ) . האוויר הופך לנוזל בצבע כחלחל. האוויר הנוזל מכיל חמצן במצב צבירה נוזל וחנקן במצב צבירה נוזל מעורבבים יחד. מניחים לאוויר הנוזל להתחמם. כאשר הוא מגיע לטמפרטורה של ( 196°C- ), החנקן הופך לגז, וניתן לאסוף אותו. בטמפרטורה זו החמצן נותר עדיין נוזל, וכך מצליחים להפריד בין שני הגזים. החמצן הנוזל הופך לגז בטמפרטורה של (183°C -). איזה נוזל הופך לגז בטמפרטורה נמוכה יותר, החמצן או החנקן?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q6" value="a" id="q6a">
+                    <label for="q6a">החנקן</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q6" value="b" id="q6b">
+                    <label for="q6b">החמצן</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q6" value="c" id="q6c">
+                    <label for="q6c">שניהם הופכים לגז באותה טמפרטורה</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q6" value="d" id="q6d">
+                    <label for="q6d">אי אפשר לשנות את מצב הצבירה של החנקן או החמצן מגז לנוזל</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback6"></div>
+        </div>
+
+        <!-- שאלה 7 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 7</div>
+            <div class="question-text">
+                הצמחים קולטים פחמן דו חמצני מהאוויר דרך פתחים זעירים בעלים, ומים דרך קצות השורשים. בעזרת אנרגיית האור הם מחוללים בחומרי גלם אלה שינויים, ומייצרים סוכר וחמצן. תהליך מורכב זה מכונה: פוטוסינתזה. החמצן אשר משתחרר דרך הפתחים הזעירים בעלים חיוני לנשימתם של רוב היצורים החיים. המילה פוטוסינתזה מורכבת משתי מילים: פוטו וסינתזה. סינתזה פירושה הרכבה או יצירה. מה פירוש המילה: פוטו?
+            </div>
+            <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVAn_0MGCodmerUg-A88hryu3Jmn-q94REQ2wj5h-0KftWnfC3cBBTireYw_0hHOSx1nZaql7DD-dt-1iED_Gdwz5sd3U-2ln3T9Vbl9CsSyEugjjumk9VMv14Fm34q5zm_Cr4lUYIdMv2V-m7nyZhe1qjg6BEhpUVk-5Rr-Kx4NgxxyxUR_4NsS1Eocwzo_bgGY_4ufBIa02A=w675" class="question-image" alt="תמונה">
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q7" value="a" id="q7a">
+                    <label for="q7a">אור</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" value="b" id="q7b">
+                    <label for="q7b">פיוניות</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" value="c" id="q7c">
+                    <label for="q7c">יונקות</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" value="d" id="q7d">
+                    <label for="q7d">תהליך</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback7"></div>
+        </div>
+
+        <!-- שאלה 8 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 8</div>
+            <div class="question-text">
+                משפחה רכשה מיכל קשיח של גז בישול. על המיכל רשום שנפח המיכל 40 ליטר, וכמות הגז 100 קילוגרם. מה יקרה לנפח הגז במיכל לאחר חודש של שימוש? מה יקרה למסת הגז במיכל לאחר חודש של שימוש? (נפח הגז= המקום שהוא תופס, מסת הגז= כמות הגז)
+            </div>
+            <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVBd84GZ4AGuB3RlKi6WnwlSwR3cvfp556DotpcjpOpR5VoByvwpLKjRlHe0HhboGXna_x6TjCvqHOsgusMV5oFaVxEb9grOZfGNSYrUUFX4dyGrz4WpRD4zR2fj3E7GAhvZEKnDo9aOdkBOMwlb6IMk_26N4ItbxvR6lg7CMtfnBt5MxslpiGBR21QBNrYVE8WQFAaPB0f_X10=w708" class="question-image" alt="תמונה">
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q8" value="a" id="q8a">
+                    <label for="q8a">נפח הגז יקטן, וכמות הגז תקטן</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q8" value="b" id="q8b">
+                    <label for="q8b">נפח הגז יגדל, וכמות הגז תקטן</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q8" value="c" id="q8c">
+                    <label for="q8c">נפח הגז יגדל, וכמות הגז תגדל</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q8" value="d" id="q8d">
+                    <label for="q8d">נפח הגז יישמר, וכמות הגז תקטן</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback8"></div>
+        </div>
+
+        <!-- שאלה 9 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 9</div>
+            <div class="question-text">
+                צפו בסרטון "לחץ האוויר", ובחרו באפשרות הנכונה.
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q9" value="a" id="q9a">
+                    <label for="q9a">לאוויר יש מסה ואין נפח</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q9" value="b" id="q9b">
+                    <label for="q9b">לאוויר יש נפח ואין מסה</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q9" value="c" id="q9c">
+                    <label for="q9c">לאוויר יש מסה ויש נפח</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q9" value="d" id="q9d">
+                    <label for="q9d">לאוויר אין מסה ואין נפח</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback9"></div>
+        </div>
+
+        <!-- שאלה 10 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 10</div>
+            <div class="question-text">
+                ליד נאפולי שבאיטליה ישנה מערה מפורסמת. מקרקעית מערה זו בוקע פחמן דו חמצני. הגז כבד מן האוויר, ולכן מצטבר על קרקעית המערה. בפתח מערה זו מהווה הפחמן הדו חמצני שיכבה של כשלושים סנטימטר. עובייה של שכבה זו הולך וגדל במידה ויורדים במערה ומגיע למטרים אחדים. הפחמן הדו חמצני הוא גז מסוכן בריכוזים גבוהים, הוא אינו מאפשר נשימה, ולכן גורם לחנק. ברור שהיצורים הראשונים הנפגעים במערה זו הם יצורים נמוכי קומה כמו הכלבים, מכאן שם המערה. באותו זמן לאדם ההולך בקומה זקופה לא יקרה דבר. צפו בסרטון ובחרו: מהן התוצאות של הניסוי המודגם?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q10" value="a" id="q10a">
+                    <label for="q10a">הנר הנמוך ביותר כבה אחרון</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q10" value="b" id="q10b">
+                    <label for="q10b">כל הנרות כבו באותו זמן</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q10" value="c" id="q10c">
+                    <label for="q10c">הנר הנמוך ביותר כבה ראשון</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q10" value="d" id="q10d">
+                    <label for="q10d">הפחמן הדו חמצני לא משפיע על בערת הנרות</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback10"></div>
+        </div>
+
+        <!-- שאלה 11 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 11</div>
+            <div class="question-text">
+                שלושה בלונים בעלי נפח שווה, המכילים כל אחד גז אחר, שוחררו מראש מגדל ביום ללא רוח. מה לדעתכם יקרה לבלון?
+            </div>
+            <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVBYACrAsTOfZ4FWFdC-1Tr7NAZcWVAOSqARJ5kJYzaVwYHxm2enijJISedb0hU0QZrs4k_bVC-RG5869x4IcldrSeDoE3pjcWN0aaRRaQAMhd1TaR0_oa-IxTK-QpY4iH401k361wTBPw4uJt6pEZg4TT7v8rTo4MKbsr3zTlVUAv7zHxBQe4pU3TN7AYUMsgW8sjPHK_PN5g=w424" class="question-image" alt="תמונה">
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q11" value="a" id="q11a">
+                    <label for="q11a">בלון מספר 2 יעלה למעלה כי הוא קל מהאוויר</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q11" value="b" id="q11b">
+                    <label for="q11b">בלון מספר 2 לא יזוז לשום מקום, כי צפיפותו כמו של האוויר</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q11" value="c" id="q11c">
+                    <label for="q11c">בלון מספר 2 ייפול למטה, כי הוא כבד מהאוויר</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q11" value="d" id="q11d">
+                    <label for="q11d">כל הבלונים יעופו למעלה</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback11"></div>
+        </div>
+
+        <!-- שאלה 12 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 12</div>
+            <div class="question-text">
+                תהליך הפוטוסינתזה, מתקיים בחלקי הצמח הירוקים, בזמן שיש אור ושאר תנאים מתאימים. כלומר: בחלק משעות היממה. תהליך הנשימה מתקיים בצמחים כל שעות היממה, כך יוצא שלעתים מתקיימים בצמח שני התהליכים במקביל. השלימו: בתהליך הנשימה....
+            </div>
+            <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVBw_FPmLNM4s61l4AjeDAnUKgyb3Y-3nlQTDtk9MxqjOlC53jDUaQ4vhUm1ftk5JeI6SL9B1qM2qDL0-8msjzHtPYwzofSVdi7L6XiZmgCtNBa9DC1H7hyhqhKWx5lsNbzSXZLlc8GeAHvqUeZTSitYUd-y4ELAlvAkcz6hdc9R_VIPTewLPwrwnBD-LuNzlXQAJHOzaqt-KlI=w740" class="question-image" alt="תמונה">
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q12" value="a" id="q12a">
+                    <label for="q12a">קולטים הצמחים, בעלי החיים והאדם חמצן, ופולטים פחמן דו חמצני</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q12" value="b" id="q12b">
+                    <label for="q12b">קולטים הצמחים, בעלי החיים והאדם פחמן דו חמצני ופולטים חמצן</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback12"></div>
+        </div>
+
+        <!-- שאלה 13 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 13</div>
+            <div class="question-text">
+                קיימים סוגים שונים של מטפים (מכשירי כיבוי). סוג אחד של מטפים מתיז פחמן דו חמצני על החומר הבוער. ידוע כי אש אינה יכולה לבעור ללא חמצן שבאוויר. הפחמן הדו חמצני שהוא גז כבד שאינו בוער, מותז על החומר הבוער, "עוטף" אותו ובדרך זו לא מאפשר לחמצן שבאוויר להגיע אליו. באין חמצן השריפה תיפסק. איזו עובדה נכונה, אך לא מוזכרת בקטע הקריאה?
+            </div>
+            <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVDNMCk3mcj77dweNMN6wFw9vqio5pcTmNMtS3A1ty6vYI4ua9C4_-_Z1qjpabfEqxE9hoKXbXrc8uYy0ex6czjvOGI0qPYelYJ5dJsFbYxdjkQuGy3r4b-tm-eTEQHjv_ou77DltLMsWr4LH8q9OG22OdEeLv2XsL3fP_JHfaoC3FmM-NcdHx1W3baLvYedFWZ2BHgZcVph2A=w310" class="question-image" alt="תמונה">
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q13" value="a" id="q13a">
+                    <label for="q13a">מטפה (או מטף בפי העם) הוא מכשיר לכבוי אש</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q13" value="b" id="q13b">
+                    <label for="q13b">אש לא יכולה לבעור ללא חמצן</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q13" value="c" id="q13c">
+                    <label for="q13c">פחמן דו חמצני הוא גז כבד שאינו בוער</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q13" value="d" id="q13d">
+                    <label for="q13d">תגובה בין אבן גיר לחומצה משחררת פחמן דו חמצני</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback13"></div>
+        </div>
+
+        <!-- שאלה 14 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 14</div>
+            <div class="question-text">
+                מי סיד צלולים הם אמצעי לזיהוי פחמן דו חמצני. כאשר נושפים פחמן דו חמצני לתוך מי סיד צלולים מתקבלת תמיסה בצבע......
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q14" value="a" id="q14a">
+                    <label for="q14a">סגול</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q14" value="b" id="q14b">
+                    <label for="q14b">לבן</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q14" value="c" id="q14c">
+                    <label for="q14c">אדום</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q14" value="d" id="q14d">
+                    <label for="q14d">ירוק</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback14"></div>
+        </div>
+
+        <!-- שאלה 15 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 15</div>
+            <div class="question-text">
+                צפו בסרטון המלווה את השאלה. בסרטון מודגמות שיטות לזיהוי נוכחות פחמן דו חמצני, חמצן ומימן. כאשר קרבו קיסם בוער למבחנה מספר 3 נשמע קול נפץ. מה הכילה מבחנה מספר 3?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q15" value="a" id="q15a">
+                    <label for="q15a">חמצן</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q15" value="b" id="q15b">
+                    <label for="q15b">פחמן דו חמצני</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q15" value="c" id="q15c">
+                    <label for="q15c">אוויר</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q15" value="d" id="q15d">
+                    <label for="q15d">מימן</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback15"></div>
+        </div>
+
+        <!-- שאלה 16 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 16</div>
+            <div class="question-text">
+                צפו בסרטון המלווה את השאלה. הסרטון מתאר כיצד ניתן להפיק מימן במעבדה. פעולה זו מחייבת זהירות רבה, ונעשית במתקן מיוחד המכונה: מינדף. כאשר מוסיפים אלומיניום או אבץ לחומצת מלח משתחרר מימן. מה המשותף לאבץ ואלומיניום?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q16" value="a" id="q16a">
+                    <label for="q16a">הם מתכות</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q16" value="b" id="q16b">
+                    <label for="q16b">אינם מוליכים חשמל</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q16" value="c" id="q16c">
+                    <label for="q16c">שקופים</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q16" value="d" id="q16d">
+                    <label for="q16d">נוזלים בטמפרטורת החדר</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback16"></div>
+        </div>
+
+        <!-- שאלה 17 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 17</div>
+            <div class="question-text">
+                בעבר השתמשו בגז מימן למילוי ספינות אוויר ובלונים, כיוון שהוא קל מהאוויר. בשנת 1937 ניצת המימן שבספינת האוויר הידנבורג, ובשריפה נהרגו 36 בני אדם. בעקבות זאת, השימוש במימן הופסק ובמקומו נעשה שימוש בהליום. מי מהאפשרויות נכונה?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q17" value="a" id="q17a">
+                    <label for="q17a">גז ההליום וגז המימן דליקים</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q17" value="b" id="q17b">
+                    <label for="q17b">גז ההליום דליק, וגז המימן אינו דליק</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q17" value="c" id="q17c">
+                    <label for="q17c">גז המימן דליק, וגז ההליום לא דליק</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q17" value="d" id="q17d">
+                    <label for="q17d">גז ההליום וגז המימן כבדים מהאוויר</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback17"></div>
+        </div>
+
+        <!-- שאלה 18 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 18</div>
+            <div class="question-text">
+                מי מהמשפטים שגוי? (שגוי= לא נכון)
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q18" value="a" id="q18a">
+                    <label for="q18a">גזים נוטים להתפשט וניתנים לדחיסה</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q18" value="b" id="q18b">
+                    <label for="q18b">נפח הגז בכלי סגור תלוי בממדי הכלי</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q18" value="c" id="q18c">
+                    <label for="q18c">גז יכול לזרום</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q18" value="d" id="q18d">
+                    <label for="q18d">גז יוצר לחץ על דפנות הכלי</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q18" value="e" id="q18e">
+                    <label for="q18e">לכל הגזים אין צבע</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback18"></div>
+        </div>
+
+        <!-- שאלה 19 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 19</div>
+            <div class="question-text">
+                מה ניתן ללמוד מהסרטון המצורף לשאלה?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q19" value="a" id="q19a">
+                    <label for="q19a">שלאוויר אין מסה</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q19" value="b" id="q19b">
+                    <label for="q19b">שלאוויר אין נפח</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q19" value="c" id="q19c">
+                    <label for="q19c">שאוויר תופס מקום</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q19" value="d" id="q19d">
+                    <label for="q19d">שכוס ריקה וכוס עם אוויר זה אותו דבר</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback19"></div>
+        </div>
+
+        <!-- שאלה 20 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 20</div>
+            <div class="question-text">
+                גז הבישול (גפ"מ) מופק בארץ בתהליך הזיקוק של הנפט. גז זה הוא למעשה תערובת של מספר גזים שכולם דליקים, חסרי צבע וריח. גז הבישול הוא גז כבד יותר מהאוויר. במקרים של דליפה הוא מצטבר במקומות נמוכים, מצב שכזה עלול לגרום להצתה וחנק כתוצאה של חוסר חמצן. בבתי הזיקוק מוסיפים לו חומר נוזלי בעל ריח חריף כדי להבחין בו כשיש דליפה. גז הבישול המופק מהנפט הוא....
+            </div>
+            <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVAAZgIFEFY3DuFyvCtNH4nzSvYh4c9SHU2A5iGNZGNNcbAk9qz9Jj8TPPK7qx_erE15QqzKHS4B8o2fM8HlzcErphCzr0l55aJMBeSdJGi8nHbwC13bvCgn8wxnVME8lf2vaxkgSLlZB9nlRnVgzcH2wAbYwZh1dkJFX46vGCidA6B3OEUrC8H5tI8Ml5K9nuL2VvoHJKVInHY=w476" class="question-image" alt="תמונה">
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q20" value="a" id="q20a">
+                    <label for="q20a">צבעוני</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q20" value="b" id="q20b">
+                    <label for="q20b">בעל ריח</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q20" value="c" id="q20c">
+                    <label for="q20c">דליק</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q20" value="d" id="q20d">
+                    <label for="q20d">קל מהאוויר</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback20"></div>
+        </div>
+
+        <!-- שאלה 21 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 21</div>
+            <div class="question-text">
+                גז האמוניה הוא חסר צבע, אך בעל ריח חריף. השימוש העיקרי בה הוא לייצור דשנים, חומרי נפץ ופולימרים. שאיפת אמוניה בריכוזים העולים על 25-35 חלקים למיליון עשויה לגרום לנזק חמור לריאות ואף למוות. מה נכון לומר על גז האמוניה?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q21" value="a" id="q21a">
+                    <label for="q21a">בעל ריח חריף</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q21" value="b" id="q21b">
+                    <label for="q21b">חסר צבע</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q21" value="c" id="q21c">
+                    <label for="q21c">עלול להיות מסוכן</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q21" value="d" id="q21d">
+                    <label for="q21d">כל התשובות נכונות</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback21"></div>
+        </div>
+
+        <!-- שאלה 22 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 22</div>
+            <div class="question-text">
+                צפו בסרטון המצורף לשאלה, ובחרו את האפשרות הנכונה.
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q22" value="a" id="q22a">
+                    <label for="q22a">הבלון הוורוד התמלא במימן ועף כלפי מעלה</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q22" value="b" id="q22b">
+                    <label for="q22b">הבלון הוורוד התמלא בפחמן דו חמצני ועף כלפי מעלה</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q22" value="c" id="q22c">
+                    <label for="q22c">הבלון הוורוד התמלא באוויר ועף כלפי מעלה</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q22" value="d" id="q22d">
+                    <label for="q22d">הבלון הוורוד התמלא באוויר ועף כלפי מטה</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback22"></div>
+        </div>
+
+        <!-- שאלה 23 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 23</div>
+            <div class="question-text">
+                על כדור הארץ האוויר נכנס לכל מקום, כי כוכבנו עטוף שכבות אוויר בעובי כמה מאות קילומטרים. כדור הארץ מושך את האוויר כמו שהוא מושך כל דבר הנמצא עליו או בקרבתו. האוויר לוחץ על פני כדור הארץ וממלא כל כלי וכל מקום פנוי. את לחץ האוויר אנו מרגישים באוזניים כשיורדים או עולים במהירות מהר גבוהה. בחיי היומיום אנו אומרים לפעמים שכלי פתוח כמו כוס, קערה, קופסה -הוא ריק. האמנם אין בכלי כל חומר? בחרו במשפט הנכון.
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q23" value="a" id="q23a">
+                    <label for="q23a">ריק ואוויר הן מילים בעלות אותה משמעות</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q23" value="b" id="q23b">
+                    <label for="q23b">ריק פירושו: מקום בלי שום חומר</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q23" value="c" id="q23c">
+                    <label for="q23c">כוס שיש בה אוויר היא כוס בלי שום חומר</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q23" value="d" id="q23d">
+                    <label for="q23d">מרכיבי האוויר הם לא חומרים</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback23"></div>
+        </div>
+
+        <!-- שאלה 24 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 24</div>
+            <div class="question-text">
+                באיזה מוצר מיושם עיקרון מדעי המודגם בסרטון?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q24" value="a" id="q24a">
+                    <label for="q24a">מספריים</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q24" value="b" id="q24b">
+                    <label for="q24b">פטיש</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q24" value="c" id="q24c">
+                    <label for="q24c">נדנדה</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q24" value="d" id="q24d">
+                    <label for="q24d">צמיגי אופניים</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback24"></div>
+        </div>
+
+        <!-- שאלה 25 -->
+        <div class="question-card">
+            <div class="question-header">שאלה 25</div>
+            <div class="question-text">
+                צפו בסרטון וענו על השאלה: מדוע נראו בועות בכוס?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q25" value="a" id="q25a">
+                    <label for="q25a">מים זרמו אל הכוס מהבקבוק</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q25" value="b" id="q25b">
+                    <label for="q25b">המים רתחו בכוס</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q25" value="c" id="q25c">
+                    <label for="q25c">אוויר מהבקבוק נכנס לכוס</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q25" value="d" id="q25d">
+                    <label for="q25d">אוויר חדר לבקבוק מהכוס</label>
+                </div>
+            </div>
+            <div class="feedback" id="feedback25"></div>
+        </div>
+
+        <button type="button" class="submit-btn" onclick="checkAnswers()">בדוק תשובות</button>
+    </form>
+
+    <div class="result" id="result">
+        <h2>תוצאות המבדק</h2>
+        <div class="score" id="score"></div>
+        <div class="score-text" id="scoreText"></div>
+        <button class="restart-btn" onclick="restartQuiz()">התחל מחדש</button>
+    </div>
+
+    <script>
+        // תשובות נכונות
+        const correctAnswers = {
+            q1: 'b',   // האוויר הוא תערובת חומרים
+            q2: 'a',   // חנקן
+            q3: 'a',   // חמצן משתחרר כתוצאה מחימום
+            q4: 'b',   // חמצן
+            q5: 'a',   // חסר ריח וחסר צבע
+            q6: 'a',   // החנקן
+            q7: 'a',   // אור
+            q8: 'd',   // נפח הגז יישמר, וכמות הגז תקטן
+            q9: 'c',   // לאוויר יש מסה ויש נפח
+            q10: 'c',  // הנר הנמוך ביותר כבה ראשון
+            q11: 'a',  // בלון מספר 2 יעלה למעלה
+            q12: 'a',  // קולטים חמצן ופולטים פחמן דו חמצני
+            q13: 'd',  // תגובה בין אבן גיר לחומצה
+            q14: 'b',  // לבן
+            q15: 'd',  // מימן
+            q16: 'a',  // הם מתכות
+            q17: 'c',  // גז המימן דליק, וגז ההליום לא דליק
+            q18: 'e',  // לכל הגזים אין צבע (שגוי)
+            q19: 'c',  // שאוויר תופס מקום
+            q20: 'c',  // דליק
+            q21: 'd',  // כל התשובות נכונות
+            q22: 'a',  // התמלא במימן ועף כלפי מעלה
+            q23: 'b',  // ריק פירושו: מקום בלי שום חומר
+            q24: 'd',  // צמיגי אופניים
+            q25: 'c'   // אוויר מהבקבוק נכנס לכוס
+        };
+
+        let answeredQuestions = 0;
+
+        // עדכון ההתקדמות כאשר בוחרים תשובה
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                updateProgress();
+            });
+        });
+
+        function updateProgress() {
+            let count = 0;
+            for (let i = 1; i <= 25; i++) {
+                if (document.querySelector(`input[name="q${i}"]:checked`)) {
+                    count++;
+                }
+            }
+            document.getElementById('progress').textContent = `התקדמות: ${count}/25 שאלות נענו`;
+        }
+
+        function checkAnswers() {
+            let score = 0;
+            let answered = 0;
+
+            // בדיקת כל שאלה
+            for (let i = 1; i <= 25; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const feedback = document.getElementById(`feedback${i}`);
+                
+                if (selected) {
+                    answered++;
+                    if (selected.value === correctAnswers[`q${i}`]) {
+                        score++;
+                        feedback.className = 'feedback correct';
+                        feedback.textContent = '✓ נכון!';
+                    } else {
+                        feedback.className = 'feedback incorrect';
+                        feedback.textContent = '✗ לא נכון';
+                    }
+                } else {
+                    const feedback = document.getElementById(`feedback${i}`);
+                    feedback.className = 'feedback incorrect';
+                    feedback.textContent = 'לא נענתה';
+                }
+            }
+
+            // הצגת התוצאה
+            if (answered < 25) {
+                alert(`עניתם רק על ${answered} מתוך 25 שאלות. אנא ענו על כל השאלות.`);
+                return;
+            }
+
+            document.getElementById('score').textContent = `${score}/25`;
+            document.getElementById('scoreText').textContent = `קיבלת ${score} תשובות נכונות מתוך 25`;
+            document.getElementById('result').classList.add('show');
+            
+            // גלילה לתוצאה
+            document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function restartQuiz() {
+            // איפוס כל התשובות
+            document.getElementById('quizForm').reset();
+            
+            // הסרת כל המשוב
+            for (let i = 1; i <= 25; i++) {
+                document.getElementById(`feedback${i}`).className = 'feedback';
+                document.getElementById(`feedback${i}`).textContent = '';
+            }
+            
+            // הסתרת התוצאה
+            document.getElementById('result').classList.remove('show');
+            
+            // עדכון ההתקדמות
+            updateProgress();
+            
+            // גלילה לראש העמוד
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
